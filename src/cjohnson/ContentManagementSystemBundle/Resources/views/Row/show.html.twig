@@ -1,0 +1,105 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('admin_row') }}">Rows</a></li>
+        <li class="active">Row: {{ entity.name }}</li>
+    </ol>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ entity.name }}
+            </h3>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Created Date</th>
+                    <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-12">{{ form(delete_form) }}   </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Components</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="alertbox"></div>
+                    <ul id="sortable" class="list-group" style="cursor: move">
+                        {% for rowComponent in rowComponents %}
+                        <li class="list-group-item" id="rowComponent-{{ rowComponent.id }}">
+                            <span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+                            {{ rowComponent.component.name }}
+                            <span style="float: right">  <a type="button" class="btn btn-default btn-xs"
+                                                            href="{{ path('admin_rowcomponent_delete_redirect_to_show_page',{'id':rowComponent.id}) }}"><span
+                                            class="glyphicon glyphicon-trash"></span></a>
+                                <a type="button" class="btn btn-default btn-xs"
+                                                            href="{{ path('admin_rowcomponent_redirect_to_show_component',{'id':rowComponent.id}) }}"><span
+                                            class="glyphicon glyphicon-pencil"></span></a></span>
+                            </li>{% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add a Component</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form(rowComponentForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Row Preview</h3>
+        </div>
+        <div class="panel-body">
+            {% set counter = 0 %}
+            {% include 'cjohnsonContentManagementSystemBundle:Default:row.html.twig' %}
+        </div>
+    </div>
+{% endblock %}{% block footerJS %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $('#sortable').sortable({
+            axis: 'y',
+            update: function (event, ui) {
+                var data = $(this).sortable('serialize');
+                // POST to server using $.post or $.ajax
+                var request =
+                        $.ajax({
+                            data: data,
+                            type: 'POST',
+                            url: '{{ path('admin_rowcomponent_rank_update_list') }}'
+                        });
+
+                request.success(function (msg) {
+                    var someNumber = Math.floor((Math.random() * 1000000) + 1);
+                    $('#alertbox').append('<div id="alert-' + someNumber + '" class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><h4>Cheers, Mate!</h4>The component orders have been updated!!</div>');
+                    window.setTimeout(function () {
+                        $("#alert-" + someNumber).fadeTo(500, 0).slideUp(500, function () {
+                            $(this).remove();
+                        });
+                    }, 5000);
+                });
+
+                request.fail(function (jqXHR, textStatus) {
+                    $('#alertbox').innerHTML = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><h4>Oh Snap!</h4>The component order has NOT been updated!!</div>';
+                });
+            }
+        });
+    </script>
+{% endblock %}

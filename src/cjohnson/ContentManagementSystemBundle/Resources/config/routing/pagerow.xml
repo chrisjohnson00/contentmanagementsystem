@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin_pagerow" path="/">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:index</default>
+    </route>
+
+    <route id="admin_pagerow_show" path="/{id}/show">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:show</default>
+    </route>
+
+    <route id="admin_pagerow_new" path="/new">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:new</default>
+    </route>
+
+    <route id="admin_pagerow_create" path="/create" methods="POST">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:create</default>
+    </route>
+
+    <route id="admin_pagerow_edit" path="/{id}/edit">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:edit</default>
+    </route>
+
+    <route id="admin_pagerow_update" path="/{id}/update" methods="POST|PUT">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:update</default>
+    </route>
+
+    <route id="admin_pagerow_delete" path="/{id}/delete" methods="POST|DELETE">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:delete</default>
+    </route>
+    <route id="admin_pagerow_delete_redirect_to_show_page" path="/{id}/delete" methods="GET">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:deleteThenRedirectToShowPage</default>
+    </route>
+    <route id="admin_pagerow_redirect_to_show_row" path="/{id}/row" methods="GET">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:redirectToShowRow</default>
+    </route>
+    <route id="admin_pagerow_rank_update_list" path="/rank/list" methods="POST">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:PageRow:rankList</default>
+    </route>
+
+
+</routes>

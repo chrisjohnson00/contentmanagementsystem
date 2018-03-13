@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li class="active">Settings</li>
+    </ol> <h1>Settings</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Bootstrap Version</th>
+            <th>Bootswatch Template</th>
+            <th>Jquery Version</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.bootstrapVersion }}</td>
+                <td>{{ entity.bootswatchTemplate }}</td>
+                <td>{{ entity.jqueryVersion }}</td>
+                <td>
+                    <a class="btn btn-default" href="{{ path('setting_edit', { 'id': entity.id }) }}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if entities|length ==0 %}
+
+        <a class="btn btn-default" href="{{ path('setting_new') }}">
+            Create a new entry
+        </a>
+    {% else %}
+        {% set entity = entities|first %}
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Bootswatch Template Sample</h3>
+                </div>
+                <div class="panel-body">
+                    {% if entity.bootswatchTemplate|lower != 'default' %}
+                        <a href="https://bootswatch.com/{{ entity.bootswatchTemplate|lower }}/" target="_blank"> <img
+                                    src="https://bootswatch.com/{{ entity.bootswatchTemplate|lower }}/thumbnail.png"/></a>
+                    {% else %}
+                        Check out default bootstrap <a href="http://getbootstrap.com/css/" target="_blank">here</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

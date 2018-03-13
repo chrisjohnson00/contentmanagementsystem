@@ -1,0 +1,27 @@
+{% for link in headerLinks %}
+    <li><a href="{{ path('cjohnson_content_management_system_dbroute',{'uri':link.page.uri}) }}">{{ link.linkText }}</a></li>
+{% endfor %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <li><a
+                href="">Log Out</a>
+    </li>{% else %}
+    <li><a
+                href="">Create an Account</a>
+    </li>
+    <li><a
+                href="">Login</a>
+    </li>
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+    <li class="dropdown">
+        <a href="#" type="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+            Admin
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li>
+                <a href="{{ path('cjohnson_content_management_system_admin') }}">
+                    Admin</a></li>
+        </ul>
+    </li>
+{% endif %}

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('setting') }}">Settings</a></li>
+        <li class="active">Setting Creation</li>
+    </ol><h1>Setting Creation</h1>
+    {{ form(form) }}
+
+
+    <a class="btn btn-default" href="{{ path('setting') }}">
+        <span class="glyphicon glyphicon-arrow-left"></span> Back to the list
+    </a>
+
+    <div class="row">&nbsp;</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Bootswatch Template Sample</h3>
+        </div>
+        <div class="panel-body">
+            <a href="https://bootswatch.com/cerulean/" target="_blank"
+               id="templateLink"> <img
+                        src="https://bootswatch.com/cerulean/thumbnail.png"
+                        id="templateThumbnail"/></a>
+        </div>
+    </div>
+{% endblock %}{% block footerJS %}
+    <script>
+        $("select")
+                .change(function ()
+                {
+                    var link = "";
+                    var thumbnail = "";
+                    $("select option:selected").each(function ()
+                    {
+                        link = "https://bootswatch.com/" + $(this).text().toLowerCase() + "/";
+                        thumbnail = "https://bootswatch.com/" + $(this).text().toLowerCase() + "/thumbnail.png";
+                    });
+                    if ($("select option:selected").text().toLowerCase() != "default")
+                    {
+                        $(".panel-body").show();
+                        $("#templateLink").attr("href", link);
+                        $("#templateThumbnail").attr('src', thumbnail);
+                    }
+                    else
+                    {
+                        $(".panel-body").hide();
+                    }
+                })
+                .change();
+    </script>
+{% endblock %}

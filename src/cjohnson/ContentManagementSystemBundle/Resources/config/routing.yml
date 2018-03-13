@@ -1,0 +1,11 @@
+cjohnson_content_management_system_admin_rowcomponent:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/rowcomponent.xml"
+    prefix:   /admin/rowcomponent
+
+cjohnson_content_management_system_admin_pagerow:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/pagerow.xml"
+    prefix:   /admin/pagerow
+
+cjohnson_content_management_system_admin:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/admin.yml"
+    prefix:   /admin/cms

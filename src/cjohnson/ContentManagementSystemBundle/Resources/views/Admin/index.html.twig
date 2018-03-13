@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+    </ol><h1>CMS Administration</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <h2><a href="{{ path('admin_page') }}">
+                    Pages</a><br/>
+                <small>Create, edit & delete pages on your site</small>
+            </h2>
+        </div>
+        <div class="col-md-3">
+            <h2><a href="{{ path('admin_row') }}">
+                    Rows</a><br/>
+                <small>Create, edit & delete rows on your site</small>
+            </h2>
+
+        </div>
+        <div class="col-md-3">
+            <h2><a href="{{ path('admin_component') }}">
+                    Components</a><br/>
+                <small>Create, edit & delete components on your site</small>
+            </h2>
+        </div>
+        <div class="col-md-3">
+            <h2><a href="{{ path('admin_image') }}">
+                    Images</a><br/>
+                <small>Manage Uploaded Images</small>
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{{ path('admin_page') }}">
+                <img src="{{ asset('bundles/cjohnsoncontentmanagementsystem/images/page_logo.png') }}" alt="Page"
+                     class="img-responsive img-rounded"></a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ path('admin_row') }}">
+                <img src="{{ asset('bundles/cjohnsoncontentmanagementsystem/images/row_logo.png') }}" alt="Row"
+                     class="img-responsive img-rounded"></a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ path('admin_component') }}">
+                <img src="{{ asset('bundles/cjohnsoncontentmanagementsystem/images/component_logo.png') }}"
+                     alt="Component"
+                     class="img-responsive img-rounded"></a></div>
+        <div class="col-md-3">
+            <a href="{{ path('admin_image') }}">
+                <img src="{{ asset('bundles/cjohnsoncontentmanagementsystem/images/image_icon.png') }}"
+                     alt="Image"
+                     class="img-responsive img-rounded"></a></div>
+    </div>
+
+{% endblock %}

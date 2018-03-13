@@ -1,0 +1,12 @@
+{% if settings|length >0 %}
+    {% set setting = settings|first %}
+    {% if setting.bootswatchTemplate|lower == 'default' %}
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/{{ setting.bootstrapVersion }}/css/bootstrap.min.css">
+    {% else %}
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootswatch/{{ setting.bootstrapVersion }}/{{ setting.bootswatchTemplate|lower }}/bootstrap.min.css">
+    {% endif %}
+{% else %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% endif %}

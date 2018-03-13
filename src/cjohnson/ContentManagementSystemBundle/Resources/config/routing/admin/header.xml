@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin_headerlink" path="/">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:index</default>
+    </route>
+
+    <route id="admin_headerlink_show" path="/{id}/show">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:show</default>
+    </route>
+
+    <route id="admin_headerlink_new" path="/new">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:new</default>
+    </route>
+
+    <route id="admin_headerlink_create" path="/create" methods="POST">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:create</default>
+    </route>
+
+    <route id="admin_headerlink_edit" path="/{id}/edit">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:edit</default>
+    </route>
+
+    <route id="admin_headerlink_update" path="/{id}/update" methods="POST|PUT">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:update</default>
+    </route>
+
+    <route id="admin_headerlink_delete" path="/{id}/delete" methods="POST|DELETE">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:HeaderLink:delete</default>
+    </route>
+
+</routes>

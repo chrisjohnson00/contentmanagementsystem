@@ -1,0 +1,13 @@
+{% if not page.hideHeader %}
+    <h1>{{ page.name }}</h1>
+{% endif %}
+{#
+so i think floor(12/length) is what i nead each column size to be
+then 12 % length will give me the first/last column size - depending if i want it to be an empty first column or empty last
+#}
+    {% set counter = 0 %}
+    {% for pageRow in pageRows %}
+        {% set rowComponents = rowComponentArray[counter] %}
+        {% include 'cjohnsonContentManagementSystemBundle:Default:row.html.twig' %}
+        {% set counter = counter+1 %}
+    {% endfor %}

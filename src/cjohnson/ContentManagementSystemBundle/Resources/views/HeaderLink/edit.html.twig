@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('admin_headerlink') }}">Header Links</a></li>
+        <li class="active">Header Link: {{ entity.linkText }}</li>
+    </ol>
+    <h1>Header Link edit</h1>
+
+    {{ form(edit_form) }}
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10"><a class="btn btn-default" href="{{ path('admin_headerlink') }}">
+                <span class="glyphicon glyphicon-arrow-left"></span> Back to the list
+            </a></div>
+    </div>
+    <div>
+        {{ form(delete_form) }}
+    </div>
+{% endblock %}

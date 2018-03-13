@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('admin_row') }}">Rows</a></li>
+        <li class="active">Row: {{ entity.name }}</li>
+    </ol> <h1>Row edit</h1>
+
+    {{ form(edit_form) }}
+
+    <a class="btn btn-default" href="{{ path('admin_row') }}">
+        Back to the row list
+    </a>
+    {{ form(delete_form) }}
+{% endblock %}

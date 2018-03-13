@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<ol class="breadcrumb">
+    {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+    <li class="active">Images</li>
+</ol> <h1>Image list</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Path</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><img class="img-responsive"
+                         src="{{ vich_uploader_asset(entity, 'imageFile')|imagine_filter('imagePreview') }}"/></td>
+                <td>
+                    {{ vich_uploader_asset(entity, 'imageFile') }}
+                </td>
+                <td>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_image_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_image_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_image_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

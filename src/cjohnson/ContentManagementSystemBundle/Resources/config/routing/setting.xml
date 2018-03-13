@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="setting_header" path="/bootstrap_header">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:Setting:header</default>
+    </route>
+    <route id="setting_footer" path="/bootstrap_footer">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:Setting:footer</default>
+    </route>
+
+</routes>

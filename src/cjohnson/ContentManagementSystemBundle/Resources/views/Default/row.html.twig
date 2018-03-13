@@ -1,0 +1,12 @@
+{% if rowComponents|length > 0 %}
+    {% set columnSize = (12/rowComponents|length)|round(0,'floor') %}
+    {% set remainingColumnSize = 12 % rowComponents|length %}
+    <div class="row">
+        {% for rowComponent in rowComponents %}
+            <div class="col-md-{{ columnSize }}">{{ rowComponent.component.content|raw }}</div>
+        {% endfor %}
+        {% if remainingColumnSize > 0 %}
+            <div class="col-md-{{ remainingColumnSize }}"></div>
+        {% endif %}
+    </div>
+{% endif %}

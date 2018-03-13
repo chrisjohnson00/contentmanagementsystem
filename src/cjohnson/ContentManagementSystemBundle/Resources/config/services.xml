@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="cjohnson.contentManagementSystemBundle.sitemap.listener.class">cjohnson\ContentManagementSystemBundle\EventListener\SitemapListener</parameter>
+        <parameter key="cjohnson.contentManagementSystemBundle.class">cjohnson\ContentManagementSystemBundle\Services\CMSService</parameter>
+    </parameters>
+
+    <services>
+        <service id="cjohnson.contentManagementSystemBundle.sitemap.listener" class="%cjohnson.contentManagementSystemBundle.sitemap.listener.class%">
+            <tag name="presta.sitemap.listener" />
+            <argument type="service" id="router"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+        <service id="cjohnson.contentManagementSystemBundle" class="%cjohnson.contentManagementSystemBundle.class%">
+            <argument type="service" id="templating"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+    </services>
+</container>

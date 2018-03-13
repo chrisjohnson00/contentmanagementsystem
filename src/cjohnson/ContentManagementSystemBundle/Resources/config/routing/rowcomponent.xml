@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin_rowcomponent" path="/">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:index</default>
+    </route>
+
+    <route id="admin_rowcomponent_show" path="/{id}/show">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:show</default>
+    </route>
+
+    <route id="admin_rowcomponent_new" path="/new">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:new</default>
+    </route>
+
+    <route id="admin_rowcomponent_create" path="/create" methods="POST">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:create</default>
+    </route>
+
+    <route id="admin_rowcomponent_edit" path="/{id}/edit">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:edit</default>
+    </route>
+
+    <route id="admin_rowcomponent_update" path="/{id}/update" methods="POST|PUT">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:update</default>
+    </route>
+
+    <route id="admin_rowcomponent_delete" path="/{id}/delete" methods="POST|DELETE">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:delete</default>
+    </route>
+    <route id="admin_rowcomponent_delete_redirect_to_show_page" path="/{id}/delete" methods="GET">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:deleteThenRedirectToShowPage
+        </default>
+    </route>
+    <route id="admin_rowcomponent_redirect_to_show_component" path="/{id}/component" methods="GET">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:redirectToShowComponent
+        </default>
+    </route>
+    <route id="admin_rowcomponent_rank_update_list" path="/rank/list" methods="POST">
+        <default key="_controller">cjohnsonContentManagementSystemBundle:RowComponent:rankList</default>
+    </route>
+
+</routes>

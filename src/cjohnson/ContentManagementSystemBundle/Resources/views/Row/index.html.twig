@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li class="active">Rows</li>
+    </ol> <h1>Row list</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a class="btn" href="{{ path('admin_row_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                </td>
+                <td>{{ entity.name }}</td>
+                <td>
+                    <a class="btn btn-default" href="{{ path('admin_row_show', { 'id': entity.id }) }}"><span
+                                class="glyphicon glyphicon-zoom-in"></span> Details</a>
+                    <a class="btn btn-default" href="{{ path('admin_row_edit', { 'id': entity.id }) }}"><span
+                                class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a class="btn btn-default"
+       href="{{ path('admin_row_new') }}">
+               <span
+                       class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create a new row
+    </a>
+
+{% endblock %}

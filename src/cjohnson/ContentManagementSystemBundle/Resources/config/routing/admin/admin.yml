@@ -1,0 +1,27 @@
+cjohnson_content_management_system_admin_row:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/row.xml"
+    prefix:   /row
+
+cjohnson_content_management_system_admin_page:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/page.xml"
+    prefix:   /page
+
+cjohnson_content_management_system_admin_component:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/component.xml"
+    prefix:   /component
+
+cjohnson_content_management_system_admin_image:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/image.xml"
+    prefix:   /image
+
+cjohnson_content_management_system_admin_headerlink:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/header.xml"
+    prefix:   /header
+
+cjohnson_content_management_system_setting:
+    resource: "@cjohnsonContentManagementSystemBundle/Resources/config/routing/admin/setting.xml"
+    prefix:   /setting
+
+cjohnson_content_management_system_admin:
+    path:      /
+    defaults:  { _controller: cjohnsonContentManagementSystemBundle:Admin:index }

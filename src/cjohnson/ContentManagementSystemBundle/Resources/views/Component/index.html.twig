@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li class="active">Components</li>
+    </ol> <h1>Component list</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a class="btn" href="{{ path('admin_component_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                </td>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.createdDate %}{{ entity.createdDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.modifiedDate %}{{ entity.modifiedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+
+                    <a class="btn btn-default" href="{{ path('admin_component_show', { 'id': entity.id }) }}"><span
+                                class="glyphicon glyphicon-zoom-in"></span> Details</a>
+                    <a class="btn btn-default" href="{{ path('admin_component_edit', { 'id': entity.id }) }}"><span
+                                class="glyphicon glyphicon-pencil"></span> Edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a class="btn btn-default" href="{{ path('admin_component_new') }}">
+        <span class="glyphicon glyphicon-plus"></span> Create a new component
+    </a>
+
+{% endblock %}

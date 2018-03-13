@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('admin_page') }}">Pages</a></li>
+        <li class="active">Page: New!</li>
+    </ol> <h1>Page creation</h1>
+
+    {{ form(form) }}
+
+        <a class="btn btn-default" href="{{ path('admin_page') }}">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back to the list
+        </a>
+
+{% endblock %}

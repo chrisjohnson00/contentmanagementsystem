@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <ol class="breadcrumb">
+        {% include 'cjohnsonContentManagementSystemBundle:Admin:breadcrumbDropdown.html.twig' %}
+        <li><a href="{{ path('admin_headerlink') }}">Header Links</a></li>
+        <li class="active">Header Link: {{ entity.linkText }}</li>
+    </ol>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Sortorder</th>
+            <td>{{ entity.sortOrder }}</td>
+        </tr>
+        <tr>
+            <th>Linktext</th>
+            <td>{{ entity.linkText }}</td>
+        </tr>
+        <tr>
+            <th>Page</th>
+            <td>{{ entity.getPage.name }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+    <div class="col-md-1"><a role="button" class="btn btn-primary"
+                             href="{{ path('admin_headerlink_edit', { 'id': entity.id }) }}">
+            Edit
+        </a></div>
+    <div class="col-md-11">{{ form(delete_form) }}   </div>
+    </div>{% endblock %}
